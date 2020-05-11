@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+</style>
+
+<body>
+    <div class="container">
+        <h1 class="display-4 mb-4" style="text-align:center;">If a day seems to be boring...</h1>
+        <div class="d-flex" style="text-align:center;">
+            <button class="button" id="getJokes">Get a random joke</button>
+            <button class="button" id="getActivities">Do something</button>
+        </div>
+        <hr>
+        <div id="output"></div>
+       
+    </div>
+
+    <script>
+        document.getElementById('getJokes').addEventListener('click', getAJoke);
+        document.getElementById('getActivities').addEventListener('click', getAnActivity);
+
+        function getAJoke() {
+            fetch('https://official-joke-api.appspot.com/random_joke')
+                .then((res) => res.json())
+                .then((data) => {
+                    let output = '<h2 class="mb-4" style="color:green;text-align:center;">Here you have a joke:</h2>';
+                  
+                        output += `
+                <div class="card card-body mb-3">
+                  <h3 style="text-align:center;">Category of this joke: ${data.type}</h3>
+                  <h3 style="text-align:center;">Q: ${data.setup}</h3>
+                  <h3 style="text-align:center;">A: ${data.punchline}</h3>
+                </div>
+              `;
+                    document.getElementById('output').innerHTML = output;
+                })
+        }
+
+        function getAnActivity() {
+
+            fetch('https://www.boredapi.com/api/activity')
+                .then((res) => res.json())
+                .then((data) => {
+                    let output = '<h2 class="mb-4" style="color:green;text-align:center;">Stay productive... Do something!</h2>';
+                  
+                        output += `
+                <div class="card card-body mb-3">
+                  <h3 style="text-align:center;">You can do this: ${data.activity}</h3>
+                  <h3 style="text-align:center;">Type of the activity: ${data.type}</h3>
+                  <h3 style="text-align:center;">This will cost you: ${data.price}</h3>
+                  <h3 style="text-align:center;">Participants: ${data.participants}</h3>
+                </div>
+              `;
+                    document.getElementById('output').innerHTML = output;
+                })
+        }
+
+    </script>
+</body>
+</html>
