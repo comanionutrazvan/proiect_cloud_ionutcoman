@@ -12,7 +12,8 @@ Descriere API
 
 Pentru a realiza aceasta aplicatie, s-au utilizat doua API-uri publice. Le voi mentiona si descrie pe rand:
 	
-1.	Jokes – „Programming and general jokes”
+1.Jokes – „Programming and general jokes”
+
 Acest API este unul public, fara metoda de autentificare. Datele sunt in format JSON si pot fi selectionate in functie de informatiile necesare. Acest API are disponibile mai multe endpoint-uri prin care poate fi accesat. Eu l-am ales pe cel „random” care genereaza o gluma la intamplare, dintr-o anumita categorie. Campurile disponibile prin acest endpoint sunt:
 
 •ID
@@ -25,6 +26,7 @@ Acest API este unul public, fara metoda de autentificare. Datele sunt in format 
 
 Pentru acest proiect, am folosit 3 campuri, excluzand ID-ul, el nefiind relevant pentru utilizator.
 Baza de date cu toate glumele disponibila este de fapt reprezentata de fisierul index.json, unde datele sunt salvate in felul urmator:
+
 {
 
 "id": 1,
@@ -37,7 +39,8 @@ Baza de date cu toate glumele disponibila este de fapt reprezentata de fisierul 
 
 },
 
-2.	Bored – „Find random activities to fight boredom”
+2.Bored – „Find random activities to fight boredom”
+
 Acest API este de asemenea unul public, fara metoda de autentificare. Are disponibile un singur endpoint, pe care este prezentata o activitate aleatoare. Campurile disponibile sunt:
 
 •Activity
@@ -55,10 +58,13 @@ Acest API este de asemenea unul public, fara metoda de autentificare. Are dispon
 •Key
 
 Pentru acest proiect, am folosit 3 campurile Activity, Type, Participants si Price.
+
 Datele sunt salvate in fisierul activities.json si sunt descrise sub structura urmatoare:
 
 {
+
 "activity":"Improve your touch typing",
+
 "accessibility":0.8,
 
 "type":"busywork",
@@ -76,7 +82,30 @@ Datele sunt salvate in fisierul activities.json si sunt descrise sub structura u
 Flux de date
 
 In cadrul acestui proiect, datele urmeaza urmatorul flux: datele sunt in format JSON in  fisierele stocate si publicate de catre cele 2 API-uri predefinite si utilizate, acestea sunt accesate prin endpoint-urile disponibile ale API-urilor. Mai departe, in cadrul aplicatiei mele, datele sunt apelate si manipulate in fisierul index.html, ca in final, utilizatorul sa poata accesa public datele printr-o metoda HTTP catre URL-ul ce va face trimitere catre pagina in format HTML.
-  
+
+Clientul foloseste o metoda de tip GET atunci cand apasa unul dintre cele doua butoane.
+
+	document.getElementById('getJokes').addEventListener('click', getAJoke);
+ 
+Din aceasta linie de cod, funtia getAJoke este cea care aduce datele din API-ul folosit si le formateaza in maniera dorita.
+
+        function getAJoke() {
+            fetch('https://official-joke-api.appspot.com/random_joke')
+                .then((res) => res.json())
+                .then((data) => {
+                    let output = '<h2 class="mb-4" style="color:green;text-align:center;">Here you have a joke:</h2>';
+                  
+                        output += `
+                <div class="card card-body mb-3">
+                  <h3 style="text-align:center;">Category of this joke: ${data.type}</h3>
+                  <h3 style="text-align:center;">Q: ${data.setup}</h3>
+                  <h3 style="text-align:center;">A: ${data.punchline}</h3>
+                </div>
+              `;
+                    document.getElementById('output').innerHTML = output;
+                })
+        } 
+ 
 Capturi de ecran
 
 ![](captures/consola_c9.png)
