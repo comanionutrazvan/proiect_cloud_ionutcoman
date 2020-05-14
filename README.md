@@ -1,4 +1,4 @@
-Proiect Cloud
+Proiect Cloud Computing
 
 Introducere
 
@@ -14,10 +14,15 @@ Pentru a realiza aceasta aplicatie, s-au utilizat doua API-uri publice. Le voi m
 	
 1.	Jokes – „Programming and general jokes”
 Acest API este unul public, fara metoda de autentificare. Datele sunt in format JSON si pot fi selectionate in functie de informatiile necesare. Acest API are disponibile mai multe endpoint-uri prin care poate fi accesat. Eu l-am ales pe cel „random” care genereaza o gluma la intamplare, dintr-o anumita categorie. Campurile disponibile prin acest endpoint sunt:
-•	ID
-•	Type
-•	Setup
-•	Punchline
+
+•ID
+
+•Type
+
+•Setup
+
+•Punchline
+
 Pentru acest proiect, am folosit 3 campuri, excluzand ID-ul, el nefiind relevant pentru utilizator.
 Baza de date cu toate glumele disponibila este de fapt reprezentata de fisierul index.json, unde datele sunt salvate in felul urmator:
   {
@@ -31,11 +36,17 @@ Baza de date cu toate glumele disponibila este de fapt reprezentata de fisierul 
 Acest API este de asemenea unul public, fara metoda de autentificare. Are disponibile un singur endpoint, pe care este prezentata o activitate aleatoare. Campurile disponibile sunt:
 
 •Activity
+
 •Accesibility
+
 •Type
+
 •Participants
+
 •Price
+
 •Link
+
 •Key
 
 Pentru acest proiect, am folosit 3 campurile Activity, Type, Participants si Price.
