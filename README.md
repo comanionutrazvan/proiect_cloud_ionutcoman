@@ -25,12 +25,17 @@ Acest API este unul public, fara metoda de autentificare. Datele sunt in format 
 
 Pentru acest proiect, am folosit 3 campuri, excluzand ID-ul, el nefiind relevant pentru utilizator.
 Baza de date cu toate glumele disponibila este de fapt reprezentata de fisierul index.json, unde datele sunt salvate in felul urmator:
-  {
-    "id": 1,
-    "type": "general",
-    "setup": "What did the fish say when it hit the wall?",
-    "punchline": "Dam."
-  },
+{
+
+"id": 1,
+
+"type": "general",
+
+"setup": "What did the fish say when it hit the wall?",
+
+"punchline": "Dam."
+
+},
 
 2.	Bored – „Find random activities to fight boredom”
 Acest API este de asemenea unul public, fara metoda de autentificare. Are disponibile un singur endpoint, pe care este prezentata o activitate aleatoare. Campurile disponibile sunt:
@@ -51,14 +56,21 @@ Acest API este de asemenea unul public, fara metoda de autentificare. Are dispon
 
 Pentru acest proiect, am folosit 3 campurile Activity, Type, Participants si Price.
 Datele sunt salvate in fisierul activities.json si sunt descrise sub structura urmatoare:
+
 {
 "activity":"Improve your touch typing",
 "accessibility":0.8,
+
 "type":"busywork",
+
 "participants":1,
+
 "price":"",
+
 "link":"https://en.wikipedia.org/wiki/Touch_typing",
+
 "key":"2526437"
+
 }
 
 Flux de date
